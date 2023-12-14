@@ -5,9 +5,8 @@ function site() {
         e.preventDefault()
         const inputPeso = form.querySelector('.peso')
         const inputAltura = form.querySelector('.altura')
-        
-        const peso = Number(inputPeso.value)
-        const altura = Number(inputAltura.value)
+        const peso = parseFloat(inputPeso.value.replace(',', '.'));
+        const altura = parseFloat(inputAltura.value.replace(',', '.'));
         const imc = getImc(peso, altura)
         const nivelPeso = getNivelPeso(imc)
 
