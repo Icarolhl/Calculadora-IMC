@@ -24,8 +24,8 @@ body section h1 {
 }
 
 .container {
-  max-width: 640px;
-  margin: 50px auto;
+  max-width: 100%;
+  margin: 50px 10px;
   background: #fff;
   padding: 20px;
   border-radius: 10px;
@@ -66,6 +66,8 @@ form button:hover {
   display: flex;
   justify-content: space-between;
   margin-right: 125px;
+  flex-direction: column;
+  margin-right: 0;
 }
 
 .titulo_lista {
@@ -79,7 +81,21 @@ ul {
 
 .background-vermelho{
   background-color: rgb(255, 150, 150);
+  padding: 10px 20px;
 }
 .background-azul{
   background-color: rgb(109, 255, 182);
+  padding:  10px 20px;
+}
+
+@media only screen and (min-width: 500px) {
+  .container {
+    max-width: 640px;
+    margin: 50px auto;
+  }
+
+  .tabelas {
+    flex-direction: row;
+    margin-right: 125px;
+  }
 }
