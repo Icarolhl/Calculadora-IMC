@@ -1,50 +1,74 @@
-function app() {
+function site() {
     const form = document.querySelector('.formularios')
-    const resultadoImc = document.querySelector('.resultado_imc')
-    
-    function recebeEventoForm(evento) {
-        evento.preventDefault()
-        const peso = form.querySelector('.peso').value
-        const altura = form.querySelector('.altura').value
-        const imc = peso / (altura*altura)
 
-        if (Number.isNaN(imc)){
-            console.log('Peso inválido')
-            resultadoImc.innerHTML = `Peso inválido`
-            resultadoImc.classList.remove('background-azul')
-            resultadoImc.classList.add('background-vermelho')
-        } else{
-            if (imc < 18.5) {
-                console.log(`Seu IMC é ${imc.toFixed(2)} (Abaixo do peso)`)
-                resultadoImc.innerHTML = `Seu IMC é ${imc.toFixed(2)} (Abaixo do peso)`
-                resultadoImc.classList.add('background-azul')
-            } else if (imc >= 18.5 && imc <= 24.9){
-                console.log(`Seu IMC é ${imc.toFixed(2)} (Peso normal)`)
-                resultadoImc.innerHTML = `Seu IMC é ${imc.toFixed(2)} (Peso normal)`
-                resultadoImc.classList.add('background-azul')
-            } else if (imc >= 25 && imc <= 29.9){
-                console.log(`Seu IMC é ${imc.toFixed(2)} (Sobrepeso)`)
-                resultadoImc.innerHTML = `Seu IMC é ${imc.toFixed(2)} (Sobrepeso)`
-                resultadoImc.classList.add('background-azul')
-            } else if (imc >= 30 && imc <= 34.9){
-                console.log(`Seu IMC é ${imc.toFixed(2)} (Obesidade grau 1)`)
-                resultadoImc.innerHTML = `Seu IMC é ${imc.toFixed(2)} (Obesidade grau 1)`
-                resultadoImc.classList.add('background-azul')
-            } else if (imc >= 35 && imc <= 39.9){
-                console.log(`Seu IMC é ${imc.toFixed(2)} (Obesidade grau 2)`)
-                resultadoImc.innerHTML = `Seu IMC é ${imc.toFixed(2)} (Obesidade grau 2)`
-                resultadoImc.classList.add('background-azul')
-            } else if (imc >= 40){
-                console.log(`Seu IMC é ${imc.toFixed(2)} (Obesidade grau 3)`)
-                resultadoImc.innerHTML = `Seu IMC é ${imc.toFixed(2)} (Obesidade grau 3)`
-                resultadoImc.classList.add('background-azul')
-            }
+    form.addEventListener('submit', e => { 
+        e.preventDefault()
+        const inputPeso = form.querySelector('.peso')
+        const inputAltura = form.querySelector('.altura')
         
+        const peso = Number(inputPeso.value)
+        const altura = Number(inputAltura.value)
+        const imc = getImc(peso, altura)
+        const nivelPeso = getNivelPeso(imc)
+
+        function getImc (peso, altura) {
+            const imc = peso / altura ** 2
+            return imc.toFixed(2)
         }
+
+        if (!peso) {
+            setResultadoImc('Peso inválido', false)
+            return
+        }
+        if (!altura) {
+            setResultadoImc('Altura inválida', false)
+            return
+        }
+
+        const msg = `Seu IMC é ${imc} (${nivelPeso}) `
+        setResultadoImc(msg, true)
+    })
+    
+    function getNivelPeso(imc) {
+       const nivel = ['Abaixo do peso', 'Peso normal', 'Sorbepeso', 'Obesidade grau 1', 'Obesidade grau 2', 'Obsideade grau 3']
+
+       if (imc >= 39.9) return nivel[5]
+       
+       if (imc >= 34.9) return nivel[4]
+
+       if (imc >= 29.9) return nivel[3]
+
+       if (imc >= 24.9) return nivel[2]
+
+       if (imc >= 18.5) return nivel[1]
+
+       if (imc < 18.5) return nivel[0]
 
     }
 
-    form.addEventListener('submit', recebeEventoForm)
+    function criarP () {
+        const p = document.createElement('p')
+        return p
+    }
+    
+    function setResultadoImc(msg, isValid) {
+        const resultadoImc = document.querySelector('.resultado_imc')
+        const p = criarP()
+
+        resultadoImc.innerHTML = '';
+        p.innerHTML = msg
+        p.classList.add('background-azul')
+        resultadoImc.appendChild(p)
+
+        if (isValid) {
+            p.classList.remove('background-vermelho')
+            p.classList.add('background-azul')
+        }
+        else {
+            p.classList.remove('background-azul')
+            p.classList.add('background-vermelho')
+        }
+    }
 }
 
-app()
+site()
