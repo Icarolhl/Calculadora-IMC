@@ -29,7 +29,7 @@ function site() {
     })
     
     function getNivelPeso(imc) {
-       const nivel = ['Abaixo do peso', 'Peso normal', 'Sorbepeso', 'Obesidade grau 1', 'Obesidade grau 2', 'Obsideade grau 3']
+       const nivel = ['Abaixo do peso', 'Peso normal', 'Sobrepeso', 'Obesidade grau 1', 'Obesidade grau 2', 'Obsideade grau 3']
 
        if (imc >= 39.9) return nivel[5]
        
