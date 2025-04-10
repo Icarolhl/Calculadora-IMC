@@ -11,8 +11,6 @@
 
 Uma aplicação web intuitiva para cálculo do Índice de Massa Corporal (IMC), com preview dinâmico, histórico de consultas e alternância de tema claro/escuro.
 
-Projetado para ser rápido, acessível e ideal para incluir em seu portfólio de desenvolvimento front-end.
-
 ---
 
 ## 🚀 Funcionalidades
