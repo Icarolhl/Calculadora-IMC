@@ -1,0 +1,130 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
+
+:root {
+  --bg-color: #f4f4f4;
+  --text-color: #222;
+  --accent-color: #2274a5;
+  --success-bg: #c8facc;
+  --error-bg: #ffcaca;
+}
+
+body.dark-mode {
+  --bg-color: #1e1e1e;
+  --text-color: #f4f4f4;
+  --accent-color: #6db1ff;
+  --success-bg: #335f48;
+  --error-bg: #703636;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  padding: 2rem;
+  transition: background 0.3s, color 0.3s;
+}
+
+.container {
+  max-width: 500px;
+  margin: auto;
+  background: white;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.1);
+  background-color: var(--bg-color);
+}
+
+body.dark-mode .container {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(1px);
+  border-radius: 12px;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+header h1 {
+  font-size: 1.6rem;
+}
+
+#toggle-theme {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.form-imc label {
+  display: block;
+  margin-top: 1rem;
+  font-weight: bold;
+}
+
+.form-imc input {
+  width: 100%;
+  padding: 0.8rem;
+  font-size: 1rem;
+  margin-top: 0.3rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.form-imc button {
+  margin-top: 1.5rem;
+  width: 100%;
+  padding: 0.8rem;
+  background-color: var(--accent-color);
+  color: white;
+  font-weight: bold;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.resultado {
+  margin-top: 2rem;
+  padding: 1rem;
+  border-radius: 8px;
+  background: var(--success-bg);
+  font-weight: bold;
+}
+
+.resultado.error {
+  background: var(--error-bg);
+}
+
+.resultado.preview {
+  opacity: 0.5;
+  font-style: italic;
+}
+
+.historico {
+  margin-top: 2rem;
+}
+
+.historico h2 {
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+}
+
+#lista-historico {
+  list-style: none;
+  padding-left: 1rem;
+}
+
+#lista-historico li {
+  margin-bottom: 0.3rem;
+  font-size: 0.95rem;
+}
