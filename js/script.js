@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function adicionarAoHistorico(entry) {
     let historico = JSON.parse(localStorage.getItem('historico-imc')) || [];
     historico.unshift(entry);
-    if (historico.length > 5) historico.pop();
+    if (historico.length > 3) historico.pop();
     localStorage.setItem('historico-imc', JSON.stringify(historico));
     renderHistorico();
   }
@@ -94,6 +94,13 @@ document.addEventListener('DOMContentLoaded', () => {
   pesoInput.addEventListener('input', atualizarPreview);
   alturaInput.addEventListener('input', atualizarPreview);
   calcularBtn.addEventListener('click', calcularFinal);
+
+  document.querySelector('.form-imc').addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      calcularFinal();
+    }
+  });
 
   renderHistorico();
 });
