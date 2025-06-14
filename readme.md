@@ -5,13 +5,11 @@
   Desenvolvida com HTML, CSS e JavaScript.
 </p>
 
----
 
 ## 📌 Sobre o projeto
 
 Uma aplicação web intuitiva para cálculo do Índice de Massa Corporal (IMC), com preview dinâmico, histórico de consultas e alternância de tema claro/escuro.
 
----
 
 ## 🚀 Funcionalidades
 
@@ -19,14 +17,12 @@ Uma aplicação web intuitiva para cálculo do Índice de Massa Corporal (IMC), 
 - Modo **claro/escuro** com persistência
 - Totalmente responsivo e mobile-first
 
----
 
 ## 🛠️ Tecnologias Utilizadas
 
 - HTML5 
 - CSS3
 - JavaScript
----
 
 ## 📦 Como utilizar
 
